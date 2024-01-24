@@ -1,6 +1,8 @@
 package com.prosilion.config;
 
+import com.prosilion.model.entity.Book;
 import com.prosilion.model.entity.ExampleJpaUser;
+import com.prosilion.repository.BookRepository;
 import com.prosilion.repository.ExampleJpaUserRepository;
 import edu.mayo.lpea.cad.cadence3.security.service.CustomizableAppUserService;
 import org.slf4j.Logger;
@@ -10,14 +12,43 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@EnableJpaRepositories(basePackageClasses = {ExampleJpaUserRepository.class})
-@EntityScan(
-		basePackageClasses = {ExampleJpaUser.class})
+@EnableJpaRepositories(basePackageClasses = {
+		ExampleJpaUserRepository.class
+		, BookRepository.class
+})
+@EntityScan(basePackageClasses = {
+		ExampleJpaUser.class,
+		Book.class
+})
 @ComponentScan(basePackages = "edu.mayo.lpea.cad.cadence3.*")
 public class ExampleJpaUserConfig {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ExampleJpaUserConfig.class);
+
+//	@Bean
+//	public SecurityFilterChain securityFilterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
+//		http
+//				.authorizeHttpRequests(authorize -> authorize
+//						.shouldFilterAllDispatcherTypes(true)
+//						.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
+//						.dispatcherTypeMatchers(DispatcherType.REQUEST).permitAll()
+//						.requestMatchers(mvc.pattern("/**")).permitAll()
+//				)
+////				.formLogin(form -> form
+////						.loginPage("/")
+////						.permitAll()
+////				)
+//		;
+//		return http.build();
+//	}
+
+	@Bean("view-books")
+	public View sample() {
+		return new JstlView("/WEB-INF/jsp/view-books.jsp");
+	}
 
 	@Bean
 	CustomizableAppUserService customizableAppUserService() {
