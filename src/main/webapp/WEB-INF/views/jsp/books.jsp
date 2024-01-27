@@ -3,10 +3,12 @@
 <html>
 <head>
   <title>View Books</title>
-  <link href="<c:url value="../../css/style.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/css/simple.css"/>" rel="stylesheet" type="text/css">
 </head>
 <body>
-<table>
+<header>Books</header>
+<main>
+  <table style="width:50%">
   <thead>
   <tr>
     <th>ISBN</th>
@@ -24,5 +26,6 @@
   </c:forEach>
   </tbody>
 </table>
+</main>
 </body>
 </html>

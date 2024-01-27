@@ -21,29 +21,31 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-tomcat</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-jasper</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
       <groupId>jakarta.servlet.jsp.jstl</groupId>
       <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-      <!--			TODO: update below for war deployment-->
-      <!--			    <scope>provided</scope> -->
       <version>3.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.taglibs</groupId>
       <artifactId>taglibs-standard-impl</artifactId>
       <version>1.2.5</version>
-<!--      <scope>runtime</scope>-->
+      <!--      <scope>runtime</scope>-->
     </dependency>
     <dependency>
       <groupId>org.glassfish.web</groupId>
       <artifactId>jakarta.servlet.jsp.jstl</artifactId>
       <version>3.0.1</version>
-    </dependency>
-
-
-    <dependency>
-      <groupId>org.apache.tomcat.embed</groupId>
-      <artifactId>tomcat-embed-jasper</artifactId>
-      <version>11.0.0-M16</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -69,8 +71,6 @@
       <groupId>edu.mayo.lpea.cad.cadence3.starter</groupId>
       <artifactId>jpa</artifactId>
       <version>${starter.version}</version>
-      <optional>false</optional>
-      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>

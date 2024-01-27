@@ -15,9 +15,9 @@ public class BookController {
     this.bookRepository = bookRepository;
   }
 
-  @GetMapping("/viewBooks")
-  public String viewBooks(Model model) {
+  @GetMapping("/books")
+  public String books(Model model) {
     model.addAttribute("books", bookRepository.findAll());
-    return "view-books";
+    return "jsp/books";
   }
 }
