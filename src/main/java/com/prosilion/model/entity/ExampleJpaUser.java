@@ -30,8 +30,7 @@ public class ExampleJpaUser extends AppUser {
     return new ExampleJpaUser();
   }
 
-  public ExampleJpaUserDto convertToDto()
-      throws InvocationTargetException, IllegalAccessException {
+  public ExampleJpaUserDto convertToDto() throws InvocationTargetException, IllegalAccessException {
     ExampleJpaUserDto exampleJpaUserDto = new ExampleJpaUserDto();
     BeanUtils.copyProperties(exampleJpaUserDto, this);
     return exampleJpaUserDto;

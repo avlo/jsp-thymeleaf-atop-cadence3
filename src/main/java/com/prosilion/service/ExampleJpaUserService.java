@@ -26,21 +26,16 @@ public class ExampleJpaUserService {
 		return exampleJpaUserRepository.findById(id).get();
 	}
 
-	public ExampleJpaUser findById(@NonNull ExampleJpaUserDto exampleJpaUserDto) throws InvocationTargetException, IllegalAccessException {
-		return findByExampleUser(exampleJpaUserDto.convertToExampleUser());
-	}
-
-	public ExampleJpaUser findByExampleUser(@NonNull ExampleJpaUser exampleJpaUser) {
+	private ExampleJpaUser find(@NonNull ExampleJpaUser exampleJpaUser) {
 		return Objects.isNull(exampleJpaUser.getId()) ? exampleJpaUser : findById(exampleJpaUser.getId());
 	}
 
 	// TODO: can repurpose below to use AppUserService instead?
 //	@Transactional
-	public ExampleJpaUserDto update(@NonNull ExampleJpaUserDto exampleJpaUserDto)
-			throws InvocationTargetException, IllegalAccessException {
+	public ExampleJpaUserDto update(@NonNull ExampleJpaUserDto exampleJpaUserDto) throws InvocationTargetException, IllegalAccessException {
 		LOGGER.info("EXAMPLE USER - updating");
 		ExampleJpaUser exampleJpaUser = exampleJpaUserDto.convertToExampleUser();
-		ExampleJpaUser retrievedUser = findByExampleUser(exampleJpaUser);
+		ExampleJpaUser retrievedUser = find(exampleJpaUser);
 		LOGGER.info("Confirm retrieved existing exampleJpaUser [{}]", retrievedUser);
 		ExampleJpaUser returnUser = exampleJpaUserRepository.save(exampleJpaUser);
 		LOGGER.info("Updating exampleJpaUser [{}]", returnUser);
